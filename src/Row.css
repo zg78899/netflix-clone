@@ -14,16 +14,35 @@
 }
 .row__poster{
   object-fit: contain;
-  width:100%;
+  width: 178px;
+  height:100px;
+  /* width:100%; */
   max-height:100px;
   margin-right: 10px;
   transition: transform 450ms;
 }
 .row__posterLarge{
   max-height:250px;
+
+  height: 250px;
+  width:167px;
 }
 .row__poster:hover{
 transform: scale(1.08);
 cursor:pointer;
 opacity:1;
+}
+.movie__wrapper{
+  height: 100%;
+  display: block;
+}
+.movie__wrapper p {
+  max-width: 178px;
+  /* width:100%; */
+  padding: 5px;
+  height:auto;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

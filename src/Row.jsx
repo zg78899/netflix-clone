@@ -3,7 +3,7 @@ import axios from "./axios";
 import "./Row.css";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
-
+import { v4 as uuidv4 } from "uuid";
 const baseURL = "https://image.tmdb.org/t/p/original/";
 
 function Row({ title, fetchUrl, isLargeRow }) {
@@ -29,11 +29,13 @@ function Row({ title, fetchUrl, isLargeRow }) {
       autoplay: 1,
     },
   };
+
+  console.log(trailerUrl);
   const handleClick = (movie) => {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-      movieTrailer(movie?.name || "")
+      movieTrailer(movie?.title || movie?.original_name || movie?.name || "")
         .then((url) => {
           // httsp://www.youtue.com/watch?v=Zny5Vxqk6Mk
           const urlParams = new URLSearchParams(new URL(url).search);
@@ -42,6 +44,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
         .catch((error) => console.log(error));
     }
   };
+  console.log(trailerUrl);
 
   console.table(movies);
   return (
@@ -50,15 +53,18 @@ function Row({ title, fetchUrl, isLargeRow }) {
       <div className="row__posters">
         {/* { serveral row__posters} */}
         {movies.map((movie) => (
-          <img
-            key={movie.id}
-            onClick={handleClick(movie)}
-            className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-            src={`${baseURL}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
-            }`}
-            alt={movie.name}
-          />
+          <div className="movie__wrapper">
+            <img
+              key={uuidv4()}
+              onClick={() => handleClick(movie)}
+              className={`row__poster ${isLargeRow ? "row__posterLarge" : ""}`}
+              src={`${baseURL}${
+                isLargeRow ? movie.poster_path : movie.backdrop_path
+              }`}
+              alt={movie.name}
+            />
+            <p>{movie?.title || movie?.name}</p>
+          </div>
         ))}
       </div>
       {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
