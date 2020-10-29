@@ -1,7 +1,7 @@
 .slide-button {
   position: absolute;
   top: 0;
-  bottom: 0;
+  bottom: 20px;
   width: 55px;
   background: rgba(0, 0, 0, 0.5);
   border: 0;
@@ -9,6 +9,7 @@
   padding: 0;
   margin: 40px 0;
   z-index: 4;
+  cursor: pointer;
 
   span {
     width: 25px;

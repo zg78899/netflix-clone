@@ -32,7 +32,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
     },
   };
 
-  console.log(trailerUrl);
+  // console.log(trailerUrl);
   const handleClick = (movie) => {
     if (trailerUrl) {
       setTrailerUrl("");
@@ -46,9 +46,9 @@ function Row({ title, fetchUrl, isLargeRow }) {
         .catch((error) => console.log(error));
     }
   };
-  console.log(trailerUrl);
+  // console.log(trailerUrl);
 
-  console.table(movies);
+  // console.table(movies);
   return (
     <div className="row">
       <h2>{title}</h2>
