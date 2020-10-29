@@ -1,12 +1,11 @@
 import React from "react";
 import "./App.css";
 import requests from "./requests";
-import Row from "./Row";
-import Banner from "./Banner";
-import Nav from "./Nav";
+import Row from "./container/Row";
+import Banner from "./container/Banner";
+import Nav from "./container/Nav";
 
 function App() {
-  console.log("top", requests.fetchTopRated);
   return (
     <div className="App">
       <Nav />
@@ -16,7 +15,6 @@ function App() {
         title="NETFLIX ORIGINALS"
         fetchUrl={requests.fetchNetflixOriginals}
       />
-
       <Row title="Trending Now" fetchUrl={requests.fetchtTrending} />
       <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
       <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />

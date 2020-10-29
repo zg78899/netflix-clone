@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "./axios";
+import axios from "../axios";
 import "./Row.css";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
-import { v4 as uuidv4 } from "uuid";
+import Slider from "../NetflixSlider/Slider";
+import Item from "../NetflixSlider/Item";
+
 const baseURL = "https://image.tmdb.org/t/p/original/";
 
 function Row({ title, fetchUrl, isLargeRow }) {
@@ -51,21 +53,31 @@ function Row({ title, fetchUrl, isLargeRow }) {
     <div className="row">
       <h2>{title}</h2>
       <div className="row__posters">
-        {/* { serveral row__posters} */}
-        {movies.map((movie) => (
-          <div className="movie__wrapper">
-            <img
-              key={uuidv4()}
-              onClick={() => handleClick(movie)}
-              className={`row__poster ${isLargeRow ? "row__posterLarge" : ""}`}
-              src={`${baseURL}${
-                isLargeRow ? movie.poster_path : movie.backdrop_path
-              }`}
-              alt={movie.name}
+        <Slider>
+          {movies.map((movie) => (
+            // <div className="movie__wrapper">
+            //   <img
+            //     key={movie.id}
+            //     onClick={() => handleClick(movie)}
+            //     className={`row__poster ${
+            //       isLargeRow ? "row__posterLarge" : ""
+            //     }`}
+            //     src={`${baseURL}${
+            //       isLargeRow ? movie.poster_path : movie.backdrop_path
+            //     }`}
+            //     alt={movie.name}
+            //   />
+            //   <p>{movie?.title || movie?.name}</p>
+            // </div>
+            <Item
+              key={movie.id}
+              movie={movie}
+              handle={handleClick}
+              isLargeRow={isLargeRow}
+              baseURL={baseURL}
             />
-            <p>{movie?.title || movie?.name}</p>
-          </div>
-        ))}
+          ))}
+        </Slider>
       </div>
       {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
     </div>

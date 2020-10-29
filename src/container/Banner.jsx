@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Banner.css";
-import axios from "./axios";
-import requests from "./requests";
+import axios from "../axios";
+import requests from "../requests";
 
 function Banner() {
   // banner-image change;
@@ -21,6 +21,7 @@ function Banner() {
     fetchData();
   }, []);
   console.log("Banner Movies", movie);
+
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
