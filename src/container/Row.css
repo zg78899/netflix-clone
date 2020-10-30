@@ -1,7 +1,7 @@
 .row{
   margin-left: 20px;
   color: #fff;
-  z-index: 99;
+  z-index: 10;
 }
 .row__posters{
   display: flex;
@@ -44,6 +44,7 @@
   height: 100%;
   width:100%;
 }
+
 .row__poster:hover{
 /* transform: scale(1.08); */
 cursor:pointer;

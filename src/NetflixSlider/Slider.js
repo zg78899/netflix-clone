@@ -17,11 +17,14 @@ const Slider = ({ children, activeSlide }) => {
     handleNext,
     slideProps,
     containerRef,
-    // hasNext,
-    // hasPrev,
+    hasNext,
+    hasPrev,
   } = useSliding(width, React.Children.count(children));
 
-  // console.log(hasNext, hasPrev);
+  console.log("useSliding", useSliding(width, React.Children.count(children)));
+  console.log("width", width);
+  console.log("useSize", useSizeElement());
+  console.log("elementRef", elementRef);
 
   const handleSelect = (movie) => {
     setCurrentSlide(movie);
@@ -37,10 +40,14 @@ const Slider = ({ children, activeSlide }) => {
     elementRef,
     currentSlide,
   };
-
+  // hasPrev = useSliding(width, React.Children.count(children)).hasPrev;
+  // hasNext s= useSliding(width, React.Children.count(children)).hasNext;
   console.log("currentSlide", contextValue.currentSlide);
   console.log("containRef", containerRef);
-  // console.log(hasNext);
+  // console.log(useSliding(width, React.Children.count(children)).hasPrev);
+  // console.log(useSliding(width, React.Children.count(children)).hasNext);
+  console.log(hasNext);
+  console.log(hasPrev);
   return (
     <SliderContext.Provider value={contextValue}>
       <SliderWrapper>
@@ -53,14 +60,10 @@ const Slider = ({ children, activeSlide }) => {
             {children}
           </div>
         </div>
-        {useSliding(width, React.Children.count(children)).hasPrev && (
-          <SlideButton onClick={handlePrev} type="prev" />
-        )}
-        {useSliding(width, React.Children.count(children)).hasNext && (
-          <SlideButton onClick={handleNext} type="next" />
-        )}
+        {hasPrev && <SlideButton onClick={() => handlePrev()} type="prev" />}
+        {hasNext && <SlideButton onClick={() => handleNext()} type="next" />}
+        {currentSlide && <Content movie={currentSlide} onClose={handleClose} />}
       </SliderWrapper>
-      {currentSlide && <Content movie={currentSlide} onClose={handleClose} />}
     </SliderContext.Provider>
   );
 };

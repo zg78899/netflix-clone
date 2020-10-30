@@ -9,14 +9,11 @@ const Item = ({ movie, handle, baseURL, isLargeRow }) => (
   <SliderContext.Consumer>
     {({ onSelectSlide, currentSlide, elementRef }) => {
       const isActive = currentSlide && currentSlide.id === movie.id;
-      // console.log("ref", elementRef);
+      console.log("ref", elementRef);
       return (
         <div
           ref={elementRef}
-          className={`movie__wrapper 
-          ${cx("item", {
-            "item--open": isActive,
-          })}`}
+          className={`movie-wrapper ${cx("item", { "item--open": isActive })}`}
         >
           <img
             key={movie.id}
