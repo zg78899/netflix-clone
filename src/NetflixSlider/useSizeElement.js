@@ -6,9 +6,7 @@ const useSizeElement = () => {
 
   useEffect(() => {
     try {
-      if (elementRef) {
-        setWidth(elementRef.current.clientWidth);
-      }
+      setWidth(elementRef.current.clientWidth);
     } catch (error) {
       console.log(error);
     }

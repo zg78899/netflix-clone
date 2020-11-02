@@ -11,8 +11,7 @@ const useSliding = (elementWidth, countElements) => {
 
   useEffect(() => {
     try {
-      // if () {
-      let containerWidth = containerRef.current.clientWidth - PADDINGS;
+      var containerWidth = containerRef.current.clientWidth - PADDINGS;
       setContainerWidth(containerWidth);
       setTotalInViewport(Math.floor(containerWidth / elementWidth));
     } catch (error) {
@@ -34,11 +33,12 @@ const useSliding = (elementWidth, countElements) => {
     setDistance(distance - containerWidth);
   };
   const slideProps = {
-    style: { transform: `translate3d(${distance}px, 0,0)` },
+    style: { transform: `translate3d(${distance}px, 0, 0)` },
   };
 
   const hasPrev = distance < 0;
   const hasNext = viewed + totalInViewport < countElements;
+
   console.log("viewed", viewed);
   console.log("distance", distance);
   console.log("totalInViewed", totalInViewport);
