@@ -55,20 +55,6 @@ function Row({ title, fetchUrl, isLargeRow }) {
       <div className="row__posters">
         <Slider>
           {movies.map((movie) => (
-            // <div className="movie__wrapper">
-            //   <img
-            //     key={movie.id}
-            //     onClick={() => handleClick(movie)}
-            //     className={`row__poster ${
-            //       isLargeRow ? "row__posterLarge" : ""
-            //     }`}
-            //     src={`${baseURL}${
-            //       isLargeRow ? movie.poster_path : movie.backdrop_path
-            //     }`}
-            //     alt={movie.name}
-            //   />
-            //   <p>{movie?.title || movie?.name}</p>
-            // </div>
             <Item
               key={movie.id}
               movie={movie}

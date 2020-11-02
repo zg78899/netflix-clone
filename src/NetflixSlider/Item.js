@@ -15,6 +15,15 @@ const Item = ({ movie, handle, baseURL, isLargeRow }) => (
           ref={elementRef}
           className={`movie-wrapper ${cx("item", { "item--open": isActive })}`}
         >
+          {isLargeRow ? (
+            <img
+              className="netflix-original"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
+              alt="Netflix Logo"
+            />
+          ) : (
+            ""
+          )}
           <img
             key={movie.id}
             onClick={() => handle(movie)}

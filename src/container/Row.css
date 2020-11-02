@@ -44,6 +44,14 @@
   height: 100%;
   width:100%;
 }
+.netflix-original{
+  position: absolute;
+  top: 5vh;
+  width: 7vw !important;
+  height: auto!important;
+  left: 1vw;
+
+}
 
 .row__poster:hover{
 /* transform: scale(1.08); */
