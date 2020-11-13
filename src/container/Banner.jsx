@@ -3,9 +3,11 @@ import "./Banner.css";
 import axios from "../axios";
 import requests from "../requests";
 
-function Banner() {
+function Banner({ title }) {
   // banner-image change;
   const [movie, setMovie] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const baseURL = "https://image.tmdb.org/t/p/original/";
 
   useEffect(() => {
     async function fetchData() {
@@ -19,6 +21,15 @@ function Banner() {
     }
 
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    async function getMovies() {
+      const res = await axios.get(requests.fetchNetflixOriginals);
+      setMovies(res.data.results);
+      return res;
+    }
+    getMovies();
   }, []);
   // console.log("Banner Movies", movie);
 
@@ -63,6 +74,20 @@ function Banner() {
             </div>
             상세 정보
           </button>
+        </div>
+      </div>
+      <div className="banner__row">
+        <h2>{title}</h2>
+        <div className="banner__posters">
+          <div className="banner-wrapper">
+            {movies.map((movie) => (
+              <img
+                key={movie.id}
+                src={`${baseURL}${movie.backdrop_path}`}
+                alt={movie.name}
+              />
+            ))}
+          </div>
         </div>
       </div>
       <div className="banner--fadeBottom"></div>

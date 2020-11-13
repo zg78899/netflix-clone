@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import IconCross from "../icons/iconCross";
 import "./Content.scss";
 
 const Content = ({ movie, onClose }) => {
-  useEffect(() => {}, [movie]);
-
   function date(day) {
     const arr = [];
     const s = day.split("-");
@@ -33,7 +31,9 @@ const Content = ({ movie, onClose }) => {
           <div className="content__title">
             {movie?.title || movie?.name} ({movie?.original_title})
           </div>
-          <div className="content__release">{date(movie.release_date)}</div>
+          <div className="content__release">
+            개봉일:{date(movie.release_date)}
+          </div>
           <div className="content__average">평점 : {movie?.vote_average}점</div>
           <div className="content__description">
             {movie.overview ? `줄거리 : ${movie.overview}` : ""}

@@ -31,9 +31,9 @@ const Item = ({ movie, handle, baseURL, isLargeRow }) => (
             }`}
             alt={movie.name}
           />
+          <p>{movie?.title || movie?.name}</p>
           <ShowDetailsButton onClick={() => onSelectSlide(movie)} />
           {isActive && <Mark />}
-          <p>{movie?.title || movie?.name}</p>
         </div>
       );
     }}

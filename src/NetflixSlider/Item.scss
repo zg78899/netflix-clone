@@ -11,5 +11,9 @@
   }
   p{
     text-align: center;
+    height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 }

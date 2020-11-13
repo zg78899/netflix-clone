@@ -7,6 +7,7 @@ import SliderWrapper from "./SliderWrapper";
 import useSliding from "./useSliding";
 import useSizeElement from "./useSizeElement";
 import "./Slider.scss";
+import YouTube from "react-youtube";
 
 const Slider = ({ children, activeSlide }) => {
   const [currentSlide, setCurrentSlide] = useState(activeSlide);
@@ -63,6 +64,7 @@ const Slider = ({ children, activeSlide }) => {
         {hasPrev && <SlideButton onClick={() => handlePrev()} type="prev" />}
         {hasNext && <SlideButton onClick={() => handleNext()} type="next" />}
         {currentSlide && <Content movie={currentSlide} onClose={handleClose} />}
+        {currentSlide && <YouTube movie={currentSlide} onClose={handleClose} />}
       </SliderWrapper>
     </SliderContext.Provider>
   );
