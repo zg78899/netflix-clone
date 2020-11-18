@@ -25,7 +25,7 @@ function Banner({ title }) {
 
   useEffect(() => {
     async function getMovies() {
-      const res = await axios.get(requests.fetchNetflixOriginals);
+      const res = await axios.get(requests.fetchPopularTvShow);
       setMovies(res.data.results);
       return res;
     }
@@ -51,9 +51,7 @@ function Banner({ title }) {
         <h1 className="banner__title">
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
-        <h1 className="banner__description">
-          {truncate(movie?.overview, 150)}
-        </h1>
+        <p className="banner__description">{truncate(movie?.overview, 150)}</p>
         <div className="banner__buttons">
           <button className="banner__button">
             <div className="icons" style={{ width: "20px", height: "20px" }}>
@@ -83,7 +81,7 @@ function Banner({ title }) {
             {movies.map((movie) => (
               <img
                 key={movie.id}
-                src={`${baseURL}${movie.backdrop_path}`}
+                src={`${baseURL}${movie?.backdrop_path || movie?.poster_path}`}
                 alt={movie.name}
               />
             ))}

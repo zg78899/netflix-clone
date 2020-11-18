@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
-const PADDINGS = 110;
+var PADDINGS = 110;
 
 const useSliding = (elementWidth, countElements) => {
   const containerRef = useRef(null);
@@ -10,28 +10,31 @@ const useSliding = (elementWidth, countElements) => {
   const [viewed, setViewed] = useState(0);
 
   useEffect(() => {
-    try {
+    if (
+      containerRef &&
+      containerRef.current &&
+      containerRef.current.clientWidth
+    ) {
       var containerWidth = containerRef.current.clientWidth - PADDINGS;
       setContainerWidth(containerWidth);
       setTotalInViewport(Math.floor(containerWidth / elementWidth));
-    } catch (error) {
-      console.log(error);
     }
-  }, [containerRef.current]);
+  }, [elementWidth]);
 
   console.log("container", containerWidth);
   console.log("ele", elementWidth);
   console.log("containerWidth", containerWidth);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setViewed(viewed - totalInViewport);
     setDistance(distance + containerWidth);
-  };
+  }, [viewed, totalInViewport, distance, containerWidth]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setViewed(viewed + totalInViewport);
     setDistance(distance - containerWidth);
-  };
+  }, [viewed, totalInViewport, distance, containerWidth]);
+
   const slideProps = {
     style: { transform: `translate3d(${distance}px, 0, 0)` },
   };

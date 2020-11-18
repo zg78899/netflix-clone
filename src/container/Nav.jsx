@@ -26,7 +26,7 @@ function Nav() {
       />
       <ul className="menu-list">
         <li>
-          <a href="">홈</a>
+          <a href="#">홈</a>
         </li>
         <li>
           <a href="https://www.netflix.com/browse/genre/83">TV프로그램</a>
