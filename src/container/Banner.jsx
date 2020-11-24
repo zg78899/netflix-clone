@@ -81,7 +81,7 @@ function Banner({ title }) {
             {movies.map((movie) => (
               <img
                 key={movie.id}
-                src={`${baseURL}${movie?.backdrop_path || movie?.poster_path}`}
+                src={`${baseURL}${movie?.backdrop_path}`}
                 alt={movie.name}
               />
             ))}

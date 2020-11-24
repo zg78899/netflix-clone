@@ -41,12 +41,12 @@ const Slider = ({ children, activeSlide }) => {
   };
   // hasPrev = useSliding(width, React.Children.count(children)).hasPrev;
   // hasNext s= useSliding(width, React.Children.count(children)).hasNext;
-  console.log("currentSlide", contextValue.currentSlide);
-  console.log("containRef", containerRef);
+  // console.log("currentSlide", contextValue.currentSlide);
+  // console.log("containRef", containerRef);
   // console.log(useSliding(width, React.Children.count(children)).hasPrev);
   // console.log(useSliding(width, React.Children.count(children)).hasNext);
-  console.log(hasNext);
-  console.log(hasPrev);
+  // console.log(hasNext);
+  // console.log(hasPrev);
   return (
     <SliderContext.Provider value={contextValue}>
       <SliderWrapper>
@@ -59,8 +59,8 @@ const Slider = ({ children, activeSlide }) => {
             {children}
           </div>
         </div>
-        {hasPrev && <SlideButton onClick={() => handlePrev()} type="prev" />}
-        {hasNext && <SlideButton onClick={() => handleNext()} type="next" />}
+        {hasPrev && <SlideButton onClick={handlePrev} type="prev" />}
+        {hasNext && <SlideButton onClick={handleNext} type="next" />}
         {currentSlide && <Content movie={currentSlide} onClose={handleClose} />}
       </SliderWrapper>
     </SliderContext.Provider>

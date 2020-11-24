@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 
 var PADDINGS = 110;
 
@@ -10,6 +10,7 @@ const useSliding = (elementWidth, countElements) => {
   const [viewed, setViewed] = useState(0);
 
   useEffect(() => {
+    console.log("containerRef가 화면에 나타남");
     if (
       containerRef &&
       containerRef.current &&
@@ -19,21 +20,21 @@ const useSliding = (elementWidth, countElements) => {
       setContainerWidth(containerWidth);
       setTotalInViewport(Math.floor(containerWidth / elementWidth));
     }
-  }, [elementWidth]);
+  }, [elementWidth, containerRef.current, countElements]);
 
   console.log("container", containerWidth);
   console.log("ele", elementWidth);
   console.log("containerWidth", containerWidth);
 
-  const handlePrev = useCallback(() => {
+  const handlePrev = () => {
     setViewed(viewed - totalInViewport);
     setDistance(distance + containerWidth);
-  }, [viewed, totalInViewport, distance, containerWidth]);
+  };
 
-  const handleNext = useCallback(() => {
+  const handleNext = () => {
     setViewed(viewed + totalInViewport);
     setDistance(distance - containerWidth);
-  }, [viewed, totalInViewport, distance, containerWidth]);
+  };
 
   const slideProps = {
     style: { transform: `translate3d(${distance}px, 0, 0)` },

@@ -3,7 +3,10 @@ import IconArrowDown from "../icons/iconArrowDown";
 import "./SlideButton.scss";
 
 const SlideButton = ({ onClick, type }) => (
-  <button className={`slide-button slide-button--${type}`} onClick={onClick}>
+  <button
+    className={`slide-button slide-button--${type}`}
+    onClick={() => onClick()}
+  >
     <span>
       <IconArrowDown />
     </span>
