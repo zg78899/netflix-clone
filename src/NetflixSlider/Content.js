@@ -15,6 +15,7 @@ const Content = ({ movie, onClose }) => {
     }월 ${arr[2].indexOf(0) === 0 ? arr[2].slice(1) : arr[2]}일`;
   }
 
+  console.log(movie);
   return (
     <div className="content">
       <div className="content__background">
@@ -29,10 +30,11 @@ const Content = ({ movie, onClose }) => {
       <div className="content__area">
         <div className="content__area__container">
           <div className="content__title">
-            {movie?.title || movie?.name} ({movie?.original_title})
+            {movie?.title || movie?.name}
+            {movie?.original_title && `(${movie.original_title})`}
           </div>
           <div className="content__release">
-            개봉일:{date(movie.release_date)}
+            개봉일:{date(movie.release_date || movie.first_air_date)}
           </div>
           <div className="content__average">평점 : {movie?.vote_average}점</div>
           <div className="content__description">
