@@ -11,15 +11,12 @@ const useSliding = (elementWidth, countElements) => {
 
   useEffect(() => {
     console.log("containerRef가 화면에 나타남");
-    if (
-      containerRef &&
-      containerRef.current &&
-      containerRef.current.clientWidth
-    ) {
+    if (containerRef?.current?.clientWidth) {
       const containerWidth = containerRef.current.clientWidth;
       setContainerWidth(containerWidth);
       setTotalInViewport(Math.floor(containerWidth / elementWidth));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [elementWidth, containerRef.current, countElements]);
 
   console.log("container", containerWidth);
